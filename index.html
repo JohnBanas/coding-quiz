@@ -9,29 +9,62 @@
 </head>
 
 <body>
-  <!--view high scores(link)(top-left except on high-score page)-->
-  <!--timer/score(top-right except on high-score page)-->
-  <!--Coding Quiz Challenge-->
-  <!--Try to answer the following code-related questions within the time limit
-  Keep in mind that incorrect answers will penalize
-your score/time by ten seconds!-->
-<!--Start Quiz Button-->
+  <header class="score-and-timer">
+    <span><a href="">View High Scores</a></span>
+    <!--timer/high-score(top-right except on high-score page)-->
+  </header> 
 
-<!--random coding questions-->
-<!--4 answer option buttons (all buttons)dark purple-->
-<!--line all the way across light gray-->
-<!--user incorrect/correct appears under line in the same gray after they answer-->
+  <main class="page-content">
+    <section class="quiz-home">
+      <h1>Coding Quiz Challenge</h1>
+      <p>Try to answer the following code-related questions within the time limit.
+      Keep in mind that incorrect answers will penalize
+      your score/time by ten seconds!</p>
+      <div class="btns-group">
+        <button class="btn" id="start-quiz" type="submit">Start Quiz</button>
+      </div>
+    </section>  
 
-<!--All Done!-->
-<!--Your final score is:__-->
-<!--enter initials: text input box-->
-<!--submit button-->
-<!--gray line and final answer still visible in mock up?-->
+    <section class="quiz-question">
+      <h1> random coding questions</h1>
+      <!--4 answer option buttons (all buttons)dark purple-->
+      <div class="btns-group">
+        <button class="btn" id="start-quiz" type="submit">Example</button>
+      </div>
+      <!--line all the way across light gray-->
+      <!--user incorrect/correct appears under line in the same gray after they answer-->
+    </section>
 
-<!--High Scores-->
-<!--light purple bar with numbered high score positions with initials next to position-->
-<!--Go Back and Clear High Scores buttons-->
+    <section class="quiz-final-score">
+      <h1>All Done!</h1>
+      <p>Your final score is:</p>
+      <!--enter initials: text input box-->
+      <!--Create new task name-->
+      <div class="save-high-score">
+        <span>Enter initials:</span><input type="text" name="initials"/>
+      </div>
+      <!--submit button-->
+      <!--gray line and final answer still visible in mock up?-->
+    </section>
 
+    <section class="high-scores">
+      <h1>High Scores</h1>
+      <!--light purple bar with numbered high score positions with initials next to position-->
+      <div class="high-score-display">
+        <input type="text" name="high-score-display" placeholder="1.Example"/>
+      </div>
+      <!--Go Back and Clear High Scores buttons-->
+      <div class="btns-group">
+        <button class="btn" id="go-home" type="submit">Go Back</button>
+        <button class="btn" id="delete-score" type="submit">Clear High Scores</button>
+      </div>
+    </section> 
+      
+    </section>
+  </main>
+  <footer>
 
+  </footer>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
