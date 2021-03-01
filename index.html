@@ -9,13 +9,14 @@
 </head>
 
 <body>
-  <header class="score-and-timer">
+  <header class="score-and-timer" id="score-and-timer">
     <span><a href="">View High Scores</a></span>
     <!--timer/high-score(top-right except on high-score page)-->
+    <div id="timer">Timer:0</div>
   </header> 
 
-  <main class="page-content">
-    <section class="quiz-home">
+  <main class="page-content" id="page-content">
+    <section class="quiz-home" id="quiz-home">
       <h1>Coding Quiz Challenge</h1>
       <p>Try to answer the following code-related questions within the time limit.
       Keep in mind that incorrect answers will penalize
@@ -25,17 +26,34 @@
       </div>
     </section>  
 
-    <section class="quiz-question">
-      <h1> random coding questions</h1>
-      <!--4 answer option buttons (all buttons)dark purple-->
-      <div class="btns-group">
-        <button class="btn" id="start-quiz" type="submit">Example</button>
-      </div>
-      <!--line all the way across light gray-->
-      <!--user incorrect/correct appears under line in the same gray after they answer-->
+    <section class="quiz-question" id="quiz-question">
+      
+      <article class="questions" id="question-one">
+        Commonly used data types DO NOT include:
+      </article>
+      
+      <article class="questions" id="question-two">
+        The condition in an if/else statement is enclosed
+        with __________ .
+      </article>
+
+      <article class="questions" id="question-three">
+        Arrays in JavaScript can be used to store ___________ .
+      </article>
+      
+      <article class="questions" id="question-four">
+        String values must be enclosed within ___________ when
+        being assigned to variables.
+      </article>
+
+      <article class="questions" id="question-five">
+        A very useful tool, used during development and debugging, for printing
+        out content to the debugger is:
+      </article>
+    
     </section>
 
-    <section class="quiz-final-score">
+    <section class="quiz-final-score" id="quiz-final-score">
       <h1>All Done!</h1>
       <p>Your final score is:</p>
       <!--enter initials: text input box-->
@@ -47,7 +65,7 @@
       <!--gray line and final answer still visible in mock up?-->
     </section>
 
-    <section class="high-scores">
+    <section class="high-scores" id="high-score">
       <h1>High Scores</h1>
       <!--light purple bar with numbered high score positions with initials next to position-->
       <div class="high-score-display">
