@@ -27,17 +27,23 @@ var quiz = {
     "Arrays in JavaScript can be used to store _______ .",
     "String values must be enclosed within _______ when being assigned to variables.",
     "A very useful tool used during development and debugging for printing content to the debugger is:"],
-  answerChoices:[
-    //question one answer is quiz.choices[0][0]
+  choices:[
+    //question one choices
     ["Alerts", "Strings", "Booleans", "Numbers"],
-    //question two answer is quiz.choices[1][0]
+    //question two choices
     ["Parenthesis", "Quotes", "Curly Brackets", "Square Brackets"],
-    //question three answer is quiz.choices[2][3]
+    //question three choices
     ["Numbers and strings", "Other Arrays", "Booleans","All of the above"],
-    //question four answer is quiz.choices[3][2]
-    ["Commas", " Curly Brackets", "Quotes", "Parenthesis"]
-  ]
-};
+    //question four choices
+    ["Commas", " Curly Brackets", "Quotes", "Parenthesis"],
+    //question five choices
+    ["JavaScript", "For Loops", "Terminal/Bash", "Console.log()"],
+  ],  
+  //answers in order 0-3 === question 0-3
+  answers:["Alerts", "Parenthesis","All of the above", "Quotes", "Console.log"],
+}; 
+
+
 
 //on load begin/quiz instruction
 var begin = function() {
@@ -47,43 +53,70 @@ var begin = function() {
     } 
   scoreLinkAndTimerEl.innerHTML = '<span><a href="#high-scores">View High Scores</a></span>' + '<span class="timer">Timer:0</span>';
   startGameEl.innerHTML ='<p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds!';
-  startGameEl.insertAdjacentHTML('beforeend','<button class="start">Start Game</button>');  
+  startGameEl.insertAdjacentHTML('beforeend','<button class="start btn">Start Game</button>');  
 }; 
-begin();
+window.onload = function(){
+  begin();
+}
 
+var quizPage = function(){
+  for (var i = 0; i < pageContent.length; i++)
+  if (pageContent[i] !== questionsEl && pageContent[i] !== scoreLinkAndTimerEl) {
+    pageContent[i].style.display = "none";
+  } else {
+    pageContent[i].style.display = "block";
+  }
+  questionsEl.innerHTML = '<p class="questions">' + quiz.question[0] + '</p>';
+  
+  for (var i = 0; i < quiz.choices[0].length; i ++)
+  console.log(quiz.choices[0][i]); 
+
+  questionsEl.insertAdjacentElement('beforeend',"div");
+}
+startGameEl.addEventListener("click", quizPage);
+//quizPage();
 
 // var timerEl
 //variables to connect to page
 var timeEl = document.querySelector(".timer");
 
+//timer function for start game and wrong answers
+//timer set amount
 var secondsLeft = 10;
   var timerInterval;
 
+//the timing interval of seconds
 function start(){
   timerInterval = setInterval(count, 1000);
 }
 
+//stop the timer
 function stop(){
   clearInterval(timerInterval);
-      sendMessage();
+  sendMessage();
 }
 
+//countdown
 function count() {
-    secondsLeft--;
-    timeEl.textContent = "Timer:" + secondsLeft;
-    if(secondsLeft === 0) {
-      stop();
-    }
+  secondsLeft--;
+  timeEl.textContent = "Timer:" + secondsLeft;
+  if(secondsLeft === 0) {
+    stop();
+  }
 }
+
+//wrong answer
 function loseTime() {
-    secondsLeft-=10;
-    if(secondsLeft<=0) {
-      stop();
-    }
-    else{
-          timeEl.textContent = "Timer:" + secondsLeft;
-    }
+  secondsLeft-=10;
+  if(secondsLeft<=0) {
+    stop();
+  }
+  else  {
+  timeEl.textContent = "Timer:" + secondsLeft;
+  }
 }
+
+//start the timer
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -94,6 +127,8 @@ function setTime() {
     }
   }, 1000);
 }
+
+//after stop send a message
 function sendMessage() {
   if (secondsLeft === 0) {
   timeEl.textContent = "Game Over";
@@ -101,7 +136,11 @@ function sendMessage() {
     timeEl.textContent = "Your Final Score is " + secondsLeft;
   }
 }
-startGameEl.addEventListener("click", setTime); 
+
+
+
+//clicking Start Quiz starts the timer
+//startGameEl.addEventListener("click", gameRun); 
 
 
 
@@ -124,4 +163,4 @@ startGameEl.addEventListener("click", setTime);
 // the high scores page has saved numbered positions for the high scores 
 // you also have two buttons 
 //one button labled go back will take you to the start quiz screen
-//the second button will clear the high scores list to start over
+//the second button will clear the high scores list to start over*/
