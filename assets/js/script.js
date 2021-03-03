@@ -50,8 +50,58 @@ var begin = function() {
   startGameEl.insertAdjacentHTML('beforeend','<button class="start">Start Game</button>');  
 }; 
 begin();
-// var timerEl
 
+
+// var timerEl
+//variables to connect to page
+var timeEl = document.querySelector(".timer");
+
+var secondsLeft = 10;
+  var timerInterval;
+
+function start(){
+  timerInterval = setInterval(count, 1000);
+}
+
+function stop(){
+  clearInterval(timerInterval);
+      sendMessage();
+}
+
+function count() {
+    secondsLeft--;
+    timeEl.textContent = "Timer:" + secondsLeft;
+    if(secondsLeft === 0) {
+      stop();
+    }
+}
+function loseTime() {
+    secondsLeft-=10;
+    if(secondsLeft<=0) {
+      stop();
+    }
+    else{
+          timeEl.textContent = "Timer:" + secondsLeft;
+    }
+}
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = "Timer:" + secondsLeft;
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+  }, 1000);
+}
+function sendMessage() {
+  if (secondsLeft === 0) {
+  timeEl.textContent = "Game Over";
+  } else {
+    timeEl.textContent = "Your Final Score is " + secondsLeft;
+  }
+}
+startGameEl.addEventListener("click", setTime); 
 
 
 
