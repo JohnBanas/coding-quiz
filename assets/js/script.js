@@ -5,199 +5,187 @@ var scoreLinkEl = document.querySelector(".high-score-link");
 
 var timerEl = document.querySelector(".timer");
 
-//link to <section class="start-game" id="start-game"> for start/home page
-var startGameEl = document.querySelector(".start-game");
+var gameInstructionEl = document.querySelector(".game-isntructions");
+
+var startGamePage = document.querySelector(".game-start");
 
 var startGameBtnEl = document.querySelector("#start-btn");
 
+var finishEl = document.querySelector(".finish-game");
+
+var highEl = document.querySelector(".high-scores");
+
+var highListEl = document.querySelector(".high-score-list");
 
 //Link  for... you guessed it ... questions
 
 //all question sections
-var questionsEl = document.querySelector(".question-contain");
+var questionsEl = document.querySelector(".questions");
 
-//individual question & answers
-var questionOneEl = document.querySelector("#section-question-one");
-var questionTwoEl = document.querySelector("#section-question-two");
-var questionThreeEl = document.querySelector("#section-question-three");
-var questionFourEl = document.querySelector("#section-question-four");
-var questionFiveEl = document.querySelector("#section-question-five");
+var questionContainerEl = document.querySelector(".question-place");
 
-var questionArray = [questionOneEl, questionTwoEl,questionThreeEl,questionFourEl,questionFiveEl];
+//individual answers
+var answersEl = document.querySelector(".btn-holder");
 
-//answers ? one
-//all
-var btnsOne = document.querySelector(".btn-one");
-
-//individual
-var correctAnsOne = document.querySelector("#one-btn-one");
-var oneWrongAnsOne = document.querySelector("#one-btn-two");
-var oneWrongAnsTwo = document.querySelector("#one-btn-three");
-var oneWrongAnsThree = document.querySelector("#one-btn-one");
-
-//answers ? two
-//all
-var btnsTwo = document.querySelector(".btn-two");
-
-var correctAnsTwo = document.querySelector("#two-btn-three");
-var twoWrongAnsOne = document.querySelector("#two-btn-one");
-var twoWrongAnsTwo = document.querySelector("#two-btn-two");
-var twoWrongAnsThree = document.querySelector("#two-btn-four");
-
-//answers ? 3
-//all
-var btnsThree = document.querySelector(".btn-three");
-
-var correctAnsThree = document.querySelector("#three-btn-four");
-var threeWrongAnsOne = document.querySelector("#three-btn-one");
-var threeWrongAnsTwo = document.querySelector("#three-btn-two");
-var threeWrongAnsThree = document.querySelector("#three-btn-three");
-
-//answers ? 4
-//all
-var btnsFour = document.querySelector(".btn-four");
-
-var correctAnsFour = document.querySelector("#four-btn-three");
-var fourWrongAnsOne = document.querySelector("#four-btn-one");
-var fourWrongAnsTwo = document.querySelector("#four-btn-two");
-var fourWrongAnsThree = document.querySelector("#four-btn-four");
-
-//answers ? 5
-//all
-var btnsFive = document.querySelector(".btn-five");
-
-var correctAnsFive = document.querySelector("#four-btn-three");
-var fiveWrongAnsOne = document.querySelector("#four-btn-one");
-var fiveWrongAnsTwo = document.querySelector("#four-btn-two");
-var fiveWrongAnsThree = document.querySelector("#four-btn-four");
-
-//link to <section class="finish-game" id="finish-game"> end game page
-var finishGameEl = document.querySelector(".finish-game");
-var finalScoreEl = document.querySelector(".final-score");
-
-var initialRetrieve = localStorage.getItem("initials");
-
-var submitBtnEl = document.querySelector(".submit-btn");
-
-var highScorePageEl = document.querySelector(".high-scores");
-var highScoreLinkEl = document.querySelector("#high-score-link");
-var addHighScoreHere = document.querySelector(".high-score-form");
 var goBackEl = document.querySelector("#go-back");
-var clearHighScoreEl = document.querySelector("#clear-scores")
-var scoreRankCounter = 0;
 
 
-//initial display
-window.onload = function(){
-  clearPage();
+
+var questionObjArray = [
+  {
+    q:'Commonly used data types DO NOT include:', 
+    a:['Alerts', 'Strings', 'Booleans', 'Numbers',]
+  },
+  {
+    q:'The condition in an if/else statement is enclosed within______.',
+    a:['Quotes','Curly Brackets','Parenthesis','Square Brackets']
+  },
+  {
+    q:'Arrays in JavaScript can be used to store ______.',
+    a:['Numbers and Strings', 'Other Arrays', 'Booleans', 'All of the Above']
+  },
+  {
+    q:'String values must be enclosed within ______ when being assigned to variables.',
+    a:['Commas', 'Curly Brackets', 'Quotes', 'Parenthesis']
+  },
+  {
+    q:'A very useful tool used during development and debugging for printing content to the debugger is:',
+    a:['Console.log()', 'JavaScript', 'Terminal/Bash', 'For Loops']
+  },
+];
+
+
+highScoreArray = [];
+
+window.onload = gameStart();
+
+function startOver(){
+  location.reload();
+}
+
+//game start
+function gameStart(){
+  startGamePage.style.display = "block";
+  gameInstructionEl.style.display = "block";
+  questionsEl.style.display = "none";
+  finishEl.style.display = "none";
+  highEl.style.display = "none";
+}
+
+quest = 0;
+
+function questions() {
+  for(var i = quest; i < questionObjArray.length; i++){
+    answersEl.innerHTML = "";
+    var question = questionObjArray[i].q;
+    var answer = questionObjArray[i].a 
+    var mix = mixRandom(answer);
+    for (var j = 0; j < answer.length; j++) {
+      createBtn(mix[j]);
+      if(mix[j]===mix.length - 1);
+    }
+      questionContainerEl.textContent = question;
+      gameInstructionEl.style.display = "none";
+      questionsEl.style.display = "block"; 
+      answersEl.style.display = "block";
+
+      if(questionObjArray[i].q===questionObjArray[0].q){
+        return;
+      } else if (questionObjArray[i].q===questionObjArray[1].q){
+       return;
+      } else if (questionObjArray[i].q===questionObjArray[2].q){
+       return;
+      } else if (questionObjArray[i].q===questionObjArray[3].q){
+       return;
+      } else if (questionObjArray[i].q===questionObjArray[4].q){
+        remove();
+       return;
+      }
+  }   
+}
+
+var createBtn = function(here){
+  var answerBtn = document.createElement("button");
+      answerBtn.className = "btn-answers";
+      answerBtn.textContent = here.toString();
+      answersEl.appendChild(answerBtn);
+      if(here < here.length)
+      here[i++];
+}
+// random shuffle code taken from
+// user 'Blender' https://stackoverflow.com/users/464744/blender on Stack Overflow 
+// on shuffling a range of numbers to prevent repetition
+// https://stackoverflow.com/questions/15585216/how-to-randomly-generate-numbers-without-repetition-in-javascript
+function mixRandom(z) {
+  for(var x, y, i = z.length; i; x = parseInt(Math.floor((Math.random() * i))), y = z[--i], z[i] = z[x], z[x] = y);
+  return z;
+};
+
+function add(event){
+  quest++;
+  questions();
+}
+
+function remove(){
+  answersEl.removeEventListener("click", add);
+  answersEl.addEventListener("click", finishedGame);
+
+}
+
+function finishedGame(){
+  startGamePage.style.display = "block";
+  questionsEl.style.display = "none";
+  finishEl.style.display = "block";
+  highEl.style.display = "none";
+}
+
+function highScoresPage(){
+  startGamePage.style.display = "none";
+  questionsEl.style.display = "none";
+  finishEl.style.display = "none";
+  highEl.style.display = "block";
+  counting++;
+}
+
+var counting = 0;
+
+var initials;
+
+function storeInitials(){
+  initials = document.querySelector("#your-initials").value;
+  if(initials === ""){
+    alert("Please type your initials.")
+    return;
+  } 
+   createScoreItem(counting, initials + ": " + secondsLeft);
+}
+console.log(JSON.stringify(localStorage));
+
+function createScoreItem(x,y){
+  listItem = document.createElement("li");
+  listItem.className = "saved-scores";
+  listItem.textContent = y;
+  highListEl.appendChild(listItem);
+  localStorage.setItem(JSON.stringify(x), JSON.stringify(y));
+  highScoresPage();
+}
+
+/**if (x.key(i) === 0){
+    localStorage.setItem(counting, initials + ": " + secondsLeft);
+    return;
+     for (var i = 0; i < localStorage.length; i++){
+      var pop = Object.keys(i);
+      pop = counting;
+      var forge = Object.value(i);
+      createScoreItem(pop,forge);
+      }
   }
+  for (var i = 0; i < localStorage.length; i++){
+    var position = localStorage.getItem(localStorage.key(i)); */
 
-function clearPage(){
-  startGameEl.style.display = "block";
-  startGameBtnEl.style.display = "block";
-  scoreLinkEl.style.display = "block";
-  timerEl.style.display = "block";
-  questionsEl.style.display = "none";
-  finishGameEl.style.display = "none";
-  highScorePageEl.style.display ="none";
-}
-
-function initializeGame(){
-  startGameEl.style.display = "none";
-  startGameBtnEl.style.display = "none";
-  questionsEl.style.display = "block";
-  questionOneEl.style.display = "block";
-  questionTwoEl.style.display = "none";
-  questionThreeEl.style.display = "none";
-  questionFourEl.style.display ="none";
-  questionFiveEl.style.display = "none";
-}
-
-function firstQuestionRight(){
-  questionOneEl.style.display = "none";
-  questionTwoEl.style.display = "block";
-}
-
-function firstQuestion(){
-  questionOneEl.style.display = "none";
-  questionTwoEl.style.display = "block";
-  secondsLeft -= 10;
-}
-
-function secondQuestionRight(){
-  questionTwoEl.style.display = "none";
-  questionThreeEl.style.display = "block";
-}
-
-function secondQuestion(){
-  questionTwoEl.style.display = "none";
-  questionThreeEl.style.display = "block";
-  secondsLeft -= 10;
-}
-
-function thirdQuestionRight(){
-  questionThreeEl.style.display = "none";
-  questionFourEl.style.display = "block";
-}
-
-function thirdQuestion(){
-  questionThreeEl.style.display = "none";
-  questionFourEl.style.display = "block";
-  secondsLeft -= 10;
-}
-
-function fourthQuestionRight(){
-  questionFourEl.style.display = "none";
-  questionFiveEl.style.display = "block";
-}
-
-function fourthQuestion(){
-  questionFourEl.style.display = "none";
-  questionFiveEl.style.display = "block";
-  secondsLeft -= 10;
-}
-
-function finishGameRight(){
-  stop();
-  finalScoreEl.textContent = "Your final score is:" + secondsLeft;
-  questionFiveEl.style.display = "none";
-  finishGameEl.style.display = "block";
-  scoreLinkEl.style.display = "none";
-  timerEl.style.display = "none";
-}
-
-function finishGame(){
-  stop();
-  finalScoreEl.textContent = "Your final score is:" + secondsLeft;
-  questionFiveEl.style.display = "none";
-  finishGameEl.style.display = "block";
-  scoreLinkEl.style.display = "block";
-  timerEl.style.display = "block";
-  secondsLeft -= 10;
-}
-
-function highScores(){
-  timerEl.style.display = "none";
-  finishGameEl.style.display = "none";
-  startGameEl.style.display = "none";
-  startGameBtnEl.style.display = "none";
-  questionsEl.style.display = "none";
-  highScorePageEl.style.display = "block";
-}
-
-function storeInitials() {
-  var initialsPlace = document.getElementById("your-initials").value;
-  var highScoreListItem = document.createElement("li");
-  highScoreListItem.className = "high-score-initials";
-  highScoreListItem.setAttribute("high-score-rank", scoreRankCounter);
-  highScoreListItem.textContent = initialsPlace;
-  addHighScoreHere.appendChild(highScoreListItem);
-  scoreRankCounter++; 
-}
-
-function clear(event){
-  addHighScoreHere.innerHTML = '';
-}
+startGameBtnEl.addEventListener("click",questions); 
+answersEl.addEventListener("click", add);
+scoreLinkEl.addEventListener("click", highScoresPage);
 
 // var timerEl
 //variables to connect to page
@@ -275,39 +263,7 @@ function stopCount() {
 </body>
 </html> **/
 
-startGameBtnEl.addEventListener("click", setTime);
-startGameBtnEl.addEventListener("click", initializeGame);
 
-correctAnsOne.addEventListener("click", firstQuestionRight);
-oneWrongAnsOne.addEventListener("click", firstQuestion);
-oneWrongAnsTwo.addEventListener("click", firstQuestion);
-oneWrongAnsThree.addEventListener("click", firstQuestion);
-
-correctAnsTwo.addEventListener("click", secondQuestionRight);
-twoWrongAnsOne.addEventListener("click", secondQuestion);
-twoWrongAnsTwo.addEventListener("click", secondQuestion);
-twoWrongAnsThree.addEventListener("click", secondQuestion);
-
-correctAnsThree.addEventListener("click", thirdQuestionRight);
-threeWrongAnsOne.addEventListener("click", thirdQuestion);
-threeWrongAnsTwo.addEventListener("click", thirdQuestion);
-threeWrongAnsThree.addEventListener("click", thirdQuestion);
-
-correctAnsFour.addEventListener("click", fourthQuestionRight);
-fourWrongAnsOne.addEventListener("click", fourthQuestion);
-fourWrongAnsTwo.addEventListener("click", fourthQuestion);
-fourWrongAnsThree.addEventListener("click", fourthQuestion);
-
-correctAnsFive.addEventListener("click", finishGameRight);
-fiveWrongAnsOne.addEventListener("click", finishGame);
-fiveWrongAnsTwo.addEventListener("click", finishGame);
-fiveWrongAnsThree.addEventListener("click", finishGame);
-
-submitBtnEl.addEventListener("click", highScores);
-highScoreLinkEl.addEventListener("click", highScores);
-goBackEl.addEventListener("click", clearPage);
-
-clearHighScoreEl.addEventListener("click", clear);
 
 
 
