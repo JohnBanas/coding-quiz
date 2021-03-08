@@ -9,15 +9,43 @@
 </head>
 
 <body class="page-content">
-  <header class="score-link-timer" id="score-link-timer"></header>
+  <div class="game-start">
+  <header class="score-link-timer" id="score-link-timer">
+    <span class="high-score-link" id="high-score-link"><a href="#high-scores">View High Scores</a></span>
+    <span class="timer" id="timer"></span>
+  </header>
 
-   <section class="start-game" id="start-game"></section>
+   <section class="game-isntructions" id="game-isntructions">
+     <p>Try to answer the following code-related questions within the time limit. 
+       Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
+      <button class="btn" id="start-btn">Start Game</button>
+   </section>
+  </div>
 
-   <section class="questions" id="questions"></section>
+  <main class="quiz-finish-scores">
+   <section class="questions" id="section-question-one">
+     <p class="question-place" id="question-one"></p>
+     <div class="btn-holder"></div>                      
+   </section>
+  
 
-   <section class="finish-game" id="finish-game"></section>
+   <section class="finish-game" id="finish-game">
+     <h2>All done!</h2>
+     <p class="final-score">Your final score is:0</p>
+     <form class="form" id="final-page" action="/index.html">
+      <label for="your-initials">Your initials:</label>
+      <input type="text" id="your-initials" name="your-initials">
+    </form>
+    <button onclick="storeInitials()" class="submit-btn" id="submit-btn">Submit</button>
+    </section>
 
-   <section class="high-scores" id="high-scores"></section>
+   <section class="high-scores" id="high-scores">
+    <h2>High Scores</h2>
+    <ol class="high-score-list" id="high-score-list"></ol>
+    <button onclick="startOver()" class="btn" id="go-back">Go Back</button>
+    <button class="btn" id="clear-scores">Clear High Scores</button>
+   </section>
+  </main>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
