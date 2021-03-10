@@ -5,47 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <title>Coding Quiz</title>
+  <title>Code Quiz</title>
 </head>
-
-<body class="page-content">
-  <div class="game-start">
-  <header class="score-link-timer" id="score-link-timer">
-    <span class="high-score-link" id="high-score-link"><a href="#high-scores">View High Scores</a></span>
-    <span class="timer" id="timer"></span>
-  </header>
-
-   <section class="game-isntructions" id="game-isntructions">
-     <p>Try to answer the following code-related questions within the time limit. 
-       Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
-      <button class="btn" id="start-btn">Start Game</button>
-   </section>
-  </div>
-
-  <main class="quiz-finish-scores">
-   <section class="questions" id="section-question-one">
-     <p class="question-place" id="question-one"></p>
-     <div class="btn-holder"></div>                      
-   </section>
-  
-
-   <section class="finish-game" id="finish-game">
-     <h2>All done!</h2>
-     <p class="final-score">Your final score is:0</p>
-     <form class="form" id="final-page" action="/index.html">
-      <label for="your-initials">Your initials:</label>
-      <input type="text" id="your-initials" name="your-initials">
-    </form>
-    <button onclick="storeInitials()" class="submit-btn" id="submit-btn">Submit</button>
+<body>
+  <!-- flex container -->
+  <main class="container">
+    <section id="home" class="flex-center flex-column">
+      <h1>Coding Quiz!</h1>
+      <p id="instructions">Try to answer the following code-related questions 
+        within the time limit, and make to the top five! Keep in mind
+        that incorrect answers will penalize your score/time by five!
+      </p>
+      <!-- links to other HTML pages styled as buttons -->
+      <a class="btn" href="quiz-start.html">Start Quiz</a>
+      <a class="btn" href="high-scores.html">High Scores</a>
     </section>
-
-   <section class="high-scores" id="high-scores">
-    <h2>High Scores</h2>
-    <ol class="high-score-list" id="high-score-list"></ol>
-    <button onclick="startOver()" class="btn" id="go-back">Go Back</button>
-    <button class="btn" id="clear-scores">Clear High Scores</button>
-   </section>
   </main>
-  <script src="./assets/js/script.js"></script>
 </body>
 </html>

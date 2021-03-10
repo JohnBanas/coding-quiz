@@ -1,13 +1,158 @@
-/* view high score link (top-left) and buttons all dark purple 
-before click, then hot pink after click. have a finger symbol on hover before click on the pointer */
+/** Root background and font-size for rem **/
+:root {
+  background-color: lavenderblush;
+  font-size: 65%;
+}
 
-/* coding quiz, high scores, all done!, quiz questions,
-all have the same font size type color. */
+/**border box**/
+* {
+  box-sizing: border-box;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  color: rgb(26, 24, 24);
+}
 
-/* starting game explanation, your final score is:, enter your initials, same font, color etc */
+/** default bottom for headings **/
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+}
 
-/* 4 quiz answer option buttons, start quiz, submit (for high score initials), go back button,
-clear high scores button, all have same text font etc. */
+/** heading sizes and settings **/
+h1 {
+  font-size: 5.5rem;
+  color: rgb(207, 7, 207);
+  margin-bottom: 3rem;
+}
 
+h1 > span {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
 
+h2 {
+  font-size: 4.2rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
 
+h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+/** Instructions **/
+#instructions {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+}
+
+/** containers & flex **/
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/** all children can be styled horizontally **/
+.container > * {
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/** buttons **/
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid purple;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: rgb(245, 223, 30);
+  background-color: rgb(207, 7, 207);
+}
+/** tranform alters position of btn(in this case on the y axis, 
+transition controls the speed rate at which this happens **/
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(155, 28, 155, 0.616);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/** Forms **/
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid purple;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: rgb(207, 7, 207);
+  background-color: rgba(207, 7, 207, 0.418);
+}
+
+input:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(155, 28, 155, 0.616);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+/** Stylize the final score output **/
+.yourFinalScore {
+  font-size: 5.5rem;
+  color: rgb(207, 7, 207);
+  margin-bottom: 4rem;
+}
