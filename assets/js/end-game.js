@@ -40,5 +40,5 @@ saveHighScore = (event) => {
   //the highScores array is strigified to localStorage 
   localStorage.setItem('highScores', JSON.stringify(highScores));
   //then go to the high scores page
-  window.location.assign("../high-scores.html");
+  window.location.assign("high-scores.html");
 }
