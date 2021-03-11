@@ -10,6 +10,7 @@ Answer the questions correctly and try and get yourself to the top five list in 
 * JavaScript
 
 ## Website
+(https://johnbanas.github.io/coding-quiz/)
 
 ## Example
 ![GIF displaying quiz running on web browser](./assets/images/code-quiz.gif)
