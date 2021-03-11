@@ -1,6 +1,6 @@
 /* save high score names */
 const username = document.getElementById("userName");
-/* save score button */
+/* save score button */ 
 const saveScoreBtnEl = document.getElementById("saveScoreBtn");
 /* <p> containing the final score */
 const finalScore = document.getElementById("finalScore");

@@ -1,4 +1,4 @@
-/** flex and spacing for the timer and high score link **/
+/** flex and spacing for the timer and high score link **/ 
 header {
   display: flex;
   justify-content: space-between;

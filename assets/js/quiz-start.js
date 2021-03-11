@@ -71,7 +71,7 @@ startGame = () => {
   questionCounter = 0;
   score = 0;
   availableQuestions = [...questions];
-  getNewQuestion();
+  getNewQuestion(); 
 }
 
 //turns on timer, if no more questions in availableQuestions array, or reached max number of questions,
@@ -82,8 +82,8 @@ getNewQuestion = () => {
     localStorage.setItem("mostRecentScore", score);
     /** go to the end game page  **/
     stopCount();
-    return window.location.assign(".../end-game.html")
-  }
+    return window.location.assign("end-game.html");
+  };
   /* questionIndex gets a random number to set as an index from availableQuestions object array
   currentQuestion is the selected index from availableQuestions object array,
   then the question inner text is set as the question from questionIndex from availableQuestions object array  */

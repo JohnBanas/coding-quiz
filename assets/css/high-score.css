@@ -1,6 +1,6 @@
 /** take out bullet points **/
 #highScoresList {
-  list-style: none;
+  list-style: none; 
   padding-left: 0;
   margin-bottom: 3rem;
 }

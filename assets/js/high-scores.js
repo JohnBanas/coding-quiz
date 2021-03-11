@@ -13,6 +13,6 @@ highScoresList.innerHTML = highScores.map(score => {
 
 //clears localstorage and resets the highScoreList.innerHTML
 clearHighScore = (event) => {
-  localStorage.clear();
+  localStorage.clear(); 
   highScoresList.innerHTML = "";
 }
