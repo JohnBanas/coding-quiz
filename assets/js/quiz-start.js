@@ -79,6 +79,7 @@ startGame = () => {
 getNewQuestion = () => {
   startCount();
   if (availableQuestions.length === 0 || questionCounter >= maxQuestions) {
+    score -= totalLoss;
     localStorage.setItem("mostRecentScore", score);
     /** go to the end game page  **/
     stopCount();
@@ -137,8 +138,9 @@ choicesEl.forEach(choice => {
 });
 
 /* wrong answer */
+let totalLoss = 0;
 scoreValueDecrease = num => {
-  timedCount(num);
+  totalLoss += num;
 }
 
 /** Timer functions **/
@@ -146,16 +148,15 @@ let c = 95;
 let t; 
 let timer_is_on = 0;
 //sets the count of the timer and penalizes for wwrong answer
-timedCount = (num) => {
-  if (num) {
-    c -= num;
-  }
+timedCount = () => {
   timerContainerEl.textContent = "Timer:" + c;
   score = c;
   c = c - 1;
   t = setTimeout(timedCount, 1000);
   if (c < 0) {
+    localStorage.setItem("mostRecentScore", 0);
     stopCount();
+    window.location.assign("end-game.html");
   }
 }
 
