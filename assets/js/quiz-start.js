@@ -82,7 +82,7 @@ getNewQuestion = () => {
     localStorage.setItem("mostRecentScore", score);
     /** go to the end game page  **/
     stopCount();
-    return window.location.assign("../end-game.html")
+    return window.location.assign(".../end-game.html")
   }
   /* questionIndex gets a random number to set as an index from availableQuestions object array
   currentQuestion is the selected index from availableQuestions object array,
