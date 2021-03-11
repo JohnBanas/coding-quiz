@@ -5,7 +5,7 @@ A timed multiple choice coding quiz application, using HTML, CSS, and Javascript
 Answer the questions correctly and try and get yourself to the top five list in the high scores, but beware of wrong answers they subtract from your time!
 
 ## Example
-![](code-quiz.gif)
+![](./assets/images/code-quiz.gif)
 
 ### Resources
 Vanderbilt Full-Stack Web Developer Course <br>
