@@ -79,7 +79,6 @@ startGame = () => {
 getNewQuestion = () => {
   startCount();
   if (availableQuestions.length === 0 || questionCounter >= maxQuestions) {
-    score -= totalLoss;
     localStorage.setItem("mostRecentScore", score);
     /** go to the end game page  **/
     stopCount();
@@ -123,7 +122,7 @@ choicesEl.forEach(choice => {
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
     /* if answer is incorrect subtract 5 from timer */
     if (classToApply === "incorrect") {
-      scoreValueDecrease(wrongAns);
+      c -= 5;
     }
     
     /* adds correct or incorrect class to allow for button color change*/
@@ -138,10 +137,7 @@ choicesEl.forEach(choice => {
 });
 
 /* wrong answer */
-let totalLoss = 0;
-scoreValueDecrease = num => {
-  totalLoss += num;
-}
+
 
 /** Timer functions **/
 let c = 95; 
